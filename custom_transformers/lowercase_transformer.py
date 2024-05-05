@@ -25,6 +25,7 @@ class LowercaseTransformer(BaseEstimator, TransformerMixin):
         X = X.copy()  # Create a copy of the input DataFrame to avoid changing the original data
         for column in self.columns:
             if column in X.columns:
+                X[column] = X[column].astype(str)
                 X[column] = X[column].str.lower()
             else:
                 print(f"Warning: '{column}' does not exist in the DataFrame.")
